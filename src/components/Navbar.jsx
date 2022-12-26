@@ -9,11 +9,14 @@ const Container = styled.div`
 const Wrapper = styled.div`
   padding: 10px 20px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 
 const Left = styled.div`
   flex: 1;
+  display: flex;
+  align-items: center;
 `;
 
 const Language = styled.span`
@@ -22,12 +25,26 @@ const Language = styled.span`
 `;
 
 const SearchContainer = styled.div`
-  border: 1px solid lightgray;
+  border: 0.5px solid lightgray;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 5px;
+`;
+
+const Input = styled.input`
+  border: none;
 `;
 
 const Center = styled.div`
   flex: 1;
+  text-align: center;
 `;
+
+const Logo = styled.h1`
+  font-weight: bold;
+`;
+
 const Right = styled.div`
   flex: 1;
 `;
@@ -39,10 +56,13 @@ const Navbar = () => {
         <Left>
           <Language>ENG</Language>
           <SearchContainer>
+            <Input />
             <Search />
           </SearchContainer>
         </Left>
-        <Center>center</Center>
+        <Center>
+          <Logo>APP</Logo>
+        </Center>
         <Right>right</Right>
       </Wrapper>
     </Container>
