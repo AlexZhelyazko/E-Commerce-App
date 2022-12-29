@@ -1,8 +1,10 @@
 import { Email, Facebook, Instagram, Phone, PinDrop, Pinterest, Twitter } from '@material-ui/icons';
 import styled from 'styled-components';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
   display: flex;
+  ${mobile({ flexDirection: 'column' })}
 `;
 const Left = styled.div`
   flex: 1;
@@ -19,6 +21,7 @@ const Right = styled.div`
 const Center = styled.div`
   padding: 20px;
   flex: 1;
+  ${mobile({ display: 'none' })}
 `;
 
 const Title = styled.h3`
