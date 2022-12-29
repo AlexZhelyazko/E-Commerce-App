@@ -18,12 +18,16 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 20px;
 `;
 
 const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
+  border: ${(props) => props.type === 'filled' && 'none'};
+  background-color: ${(props) => (props.type === 'filled' ? 'black' : 'transparent')};
+  color: ${(props) => props.type === 'filled' && 'white'};
 `;
 
 const TopTexts = styled.div``;
@@ -34,7 +38,29 @@ const TopText = styled.span`
   margin: 0 10px;
 `;
 
-const Bottom = styled.div``;
+const Bottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Info = styled.div`
+  flex: 3;
+`;
+
+const Product = styled.div``;
+const ProductDetails = styled.div``;
+const Image = styled.img``;
+const Details = styled.div``;
+const ProductName = styled.span``;
+const ProductId = styled.span``;
+const ProductColor = styled.div``;
+const ProductSize = styled.span``;
+
+const PriceDetails = styled.div``;
+
+const Summary = styled.div`
+  flex: 1;
+`;
 
 export const Cart = () => {
   return (
@@ -49,9 +75,31 @@ export const Cart = () => {
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist(0)</TopText>
           </TopTexts>
-          <TopButton>CHECKOUT NOW</TopButton>
+          <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
-        <Bottom></Bottom>
+        <Bottom>
+          <Info>
+            <Product>
+              <ProductDetails>
+                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
+                <Details>
+                  <ProductName>
+                    <b>Product:</b> JESSIE THUNDER SHOES
+                  </ProductName>
+                  <ProductId>
+                    <b>ID:</b>5626556
+                  </ProductId>
+                  <ProductColor />
+                  <ProductSize>
+                    <b>Size:</b>37.5
+                  </ProductSize>
+                </Details>
+              </ProductDetails>
+              <PriceDetails>price</PriceDetails>
+            </Product>
+          </Info>
+          <Summary>summary</Summary>
+        </Bottom>
       </Wrapper>
       <Footer />
     </Container>
