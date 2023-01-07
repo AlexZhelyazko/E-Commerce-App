@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { mobile } from '../responsive';
 
@@ -45,11 +46,13 @@ const Button = styled.button`
 export const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
-      </Info>
+      <NavLink to={`/products/${item.categories}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <Button>SHOP NOW</Button>
+        </Info>
+      </NavLink>
     </Container>
   );
 };

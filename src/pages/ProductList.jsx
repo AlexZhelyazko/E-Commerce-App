@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { Announcement } from '../components/Announcement';
 import { Footer } from '../components/Footer';
@@ -37,6 +39,20 @@ const Select = styled.select`
 const Option = styled.option``;
 
 export const ProductList = () => {
+  const params = useParams();
+  const category = params.category;
+  const [filters, setFilters] = useState({});
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
+
+  console.log(filters);
+
   return (
     <Container>
       <Navbar />
@@ -45,10 +61,8 @@ export const ProductList = () => {
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select>
-            <Option disabled selected>
-              Color
-            </Option>
+          <Select name="color" onChange={handleFilters}>
+            <Option disabled>Color</Option>
             <Option>White</Option>
             <Option>Black</Option>
             <Option>Red</Option>
@@ -56,10 +70,8 @@ export const ProductList = () => {
             <Option>Yellow</Option>
             <Option>Green</Option>
           </Select>
-          <Select>
-            <Option disabled selected>
-              Size
-            </Option>
+          <Select name="size" onChange={handleFilters}>
+            <Option disabled>Size</Option>
             <Option>XS</Option>
             <Option>S</Option>
             <Option>M</Option>
