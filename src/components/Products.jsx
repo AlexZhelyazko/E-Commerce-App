@@ -50,9 +50,9 @@ export const Products = ({ category, filters, sort }) => {
 
   return (
     <Container>
-      {filteredProducts.map((el) => (
-        <Product item={el} key={el.id} />
-      ))}
+      {category
+        ? filteredProducts.map((el) => <Product item={el} key={el.id} />)
+        : products.slice(0, 8).map((el) => <Product item={el} key={el.id} />)}
     </Container>
   );
 };
