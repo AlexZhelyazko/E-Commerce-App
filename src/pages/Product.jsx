@@ -180,7 +180,9 @@ export const Product = () => {
               <Amount>{quantity}</Amount>
               <Add onClick={() => setQuantity((prev) => prev + 1)} />
             </AmountContainer>
-            <Button onClick={() => handleClick()}>Add to Cart</Button>
+            <Button disabled={quantity > 0 ? false : true} onClick={() => handleClick()}>
+              Add to Cart
+            </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
