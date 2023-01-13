@@ -1,4 +1,7 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { loginUser } from '../redux/asyncActions';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
@@ -45,6 +48,9 @@ const Button = styled.button`
   color: white;
   margin-bottom: 10px;
   cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
 const Link = styled.a`
@@ -54,15 +60,36 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
+const Error = styled.div`
+  color: red;
+  margin: 5px 0px;
+  display: ${(props) => (props.status === 'rejected' ? 'block' : 'none')};
+`;
+
 export const Login = () => {
+  const status = useSelector((state) => state.auth.status);
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const onLoginClick = (e) => {
+    e.preventDefault();
+    dispatch(loginUser({ username, password }));
+  };
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="user name" />
-          <Input placeholder="password" />
-          <Button>LOGIN</Button>
+          <Input placeholder="user name" onChange={(e) => setUserName(e.target.value)} />
+          <Input
+            type="password"
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Error status={status}>Something went wrong...</Error>
+          <Button disabled={status === 'pending' ? true : false} onClick={onLoginClick}>
+            LOGIN
+          </Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>

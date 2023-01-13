@@ -7,7 +7,7 @@ import { Cart } from './pages/Cart';
 import { Navigate, Route, Routes } from 'react-router';
 
 const App = () => {
-  let user = true;
+  let user = false;
   return (
     <Routes>
       <Route path="/" element={<Home />} />
