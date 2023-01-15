@@ -67,7 +67,8 @@ const Error = styled.div`
 `;
 
 export const Login = () => {
-  const status = useSelector((state) => state.auth.status);
+  const status = useSelector((state) => state?.auth?.status);
+  console.log(status);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
